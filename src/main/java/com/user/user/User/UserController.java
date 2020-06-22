@@ -1,5 +1,7 @@
 package com.user.user.User;
 
+import javax.validation.Valid;
+
 import com.user.user.UserRepository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +49,7 @@ public class UserController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") long id, User user, BindingResult result, Model model) {
+    public String updateUser(@PathVariable("id") long id, @Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             user.setId(id);
             return "update-user";
